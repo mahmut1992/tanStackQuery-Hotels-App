@@ -1,0 +1,28 @@
+import React, { type FC } from "react";
+import { FaExclamationTriangle } from "react-icons/fa";
+
+interface Props {
+  message?: string;
+  refetch?: () => void;
+}
+
+const Error: FC<Props> = ({ message, refetch }) => {
+  return (
+    <div className="flex justify-center items-center h-[60vh]  flex-col gap-5 ">
+      <FaExclamationTriangle className="text-red-500 text-3xl" />
+      <p className="text-red-500 font-semibold">Bir hata oluştu</p>
+
+      <p>{message}</p>
+      {refetch && (
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          onClick={refetch}
+        >
+          Tekrar dene
+        </button>
+      )}
+    </div>
+  );
+};
+
+export default Error;
